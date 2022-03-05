@@ -1,4 +1,4 @@
-// Copyright 2019-present Vic Shóstak. All rights reserved.
+// Copyright 2022 Vic Shóstak and Create Go App Contributors. All rights reserved.
 // Use of this source code is governed by Apache 2.0 license
 // that can be found in the LICENSE file.
 
@@ -15,7 +15,7 @@ import (
 func ExecCommand(command string, options []string, silentMode bool) error {
 	// Checking for nil.
 	if command == "" || options == nil {
-		return fmt.Errorf("No command to execute!")
+		return fmt.Errorf("no command to execute")
 	}
 
 	// Create buffer for stderr.

@@ -1,4 +1,4 @@
-// Copyright 2019-present Vic Shóstak. All rights reserved.
+// Copyright 2022 Vic Shóstak and Create Go App Contributors. All rights reserved.
 // Use of this source code is governed by Apache 2.0 license
 // that can be found in the LICENSE file.
 
@@ -8,9 +8,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/spf13/cobra"
+
 	"github.com/create-go-app/cli/v3/pkg/cgapp"
 	"github.com/create-go-app/cli/v3/pkg/registry"
-	"github.com/spf13/cobra"
 )
 
 func init() {

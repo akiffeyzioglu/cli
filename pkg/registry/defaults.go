@@ -1,4 +1,4 @@
-// Copyright 2019-present Vic Shóstak. All rights reserved.
+// Copyright 2022 Vic Shóstak and Create Go App Contributors. All rights reserved.
 // Use of this source code is governed by Apache 2.0 license
 // that can be found in the LICENSE file.
 
@@ -11,7 +11,7 @@ import (
 )
 
 // CLIVersion version of Create Go App CLI.
-const CLIVersion string = "3.2.2"
+const CLIVersion string = "3.6.0"
 
 // Variables struct for Ansible variables (inventory, hosts).
 type Variables struct {
@@ -48,9 +48,10 @@ var (
 				Options: []string{
 					"net/http",
 					"fiber",
+					"chi",
 				},
 				Default:  "fiber",
-				PageSize: 2,
+				PageSize: 3,
 			},
 			Validate: survey.Required,
 		},
@@ -67,6 +68,9 @@ var (
 					"react-ts",
 					"preact",
 					"preact-ts",
+					"next",
+					"next-ts",
+					"nuxt3",
 					"vue",
 					"vue-ts",
 					"svelte",
@@ -75,7 +79,7 @@ var (
 					"lit-element-ts",
 				},
 				Default:  "none",
-				PageSize: 13,
+				PageSize: 16,
 			},
 		},
 		{
@@ -107,7 +111,6 @@ var (
 			Name: "backend",
 			Prompt: &survey.Input{
 				Message: "Enter URL to the custom backend repository:",
-				Help:    "No need to specify `http://` or `https://` protocol.",
 			},
 			Validate: survey.Required,
 		},
@@ -115,7 +118,6 @@ var (
 			Name: "frontend",
 			Prompt: &survey.Input{
 				Message: "Enter URL to the custom frontend repository:",
-				Help:    "No need to specify `http://` or `https://` protocol.",
 				Default: "none",
 			},
 		},

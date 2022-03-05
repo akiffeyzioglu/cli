@@ -25,6 +25,9 @@ builds:
       - CGO_ENABLED=0
     ldflags:
       - -s -w
+    hooks:
+      post:
+        - upx --brute "{{ .Path }}"
 
 # .goreleaser.yml
 brews:
@@ -33,7 +36,7 @@ brews:
       owner: create-go-app
       name: homebrew-cli
 
-    # Template for the url which is determined by the given Token (github or gitlab)
+    # Template for the url which is determined by the given Token (GitHub or gitlab)
     # Default for github is "https://github.com/<repo_owner>/<repo_name>/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     url_template: "https://github.com/create-go-app/cli/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
 
@@ -65,26 +68,27 @@ brews:
 
     # Packages your package depends on.
     dependencies:
+      - name: npm
       - name: git
       - name: go
 
-dockers:
-  - # GOOS of the built binary that should be used.
-    goos: linux
-    goarch: amd64
-
-    # Name templates of the built binaries that should be used.
-    ids: ["cgapp"]
-
-    # Templates of the Docker image names.
-    image_templates:
-      - "koddr/cgapp:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
-      - "koddr/cgapp:{{ .Major }}.{{ .Minor }}"
-      - "koddr/cgapp:{{ .Major }}"
-      - "koddr/cgapp:latest"
-
-    # Path to the Dockerfile (from the project root).
-    dockerfile: Dockerfile
+#dockers:
+#  - # GOOS of the built binary that should be used.
+#    goos: linux
+#    goarch: amd64
+#
+#    # Name templates of the built binaries that should be used.
+#    ids: ["cgapp"]
+#
+#    # Templates of the Docker image names.
+#    image_templates:
+#      - "koddr/cgapp:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+#      - "koddr/cgapp:{{ .Major }}.{{ .Minor }}"
+#      - "koddr/cgapp:{{ .Major }}"
+#      - "koddr/cgapp:latest"
+#
+#    # Path to the Dockerfile (from the project root).
+#    dockerfile: Dockerfile.goreleaser
 
 archives:
   - # Replacements for GOOS and GOARCH in the archive name.

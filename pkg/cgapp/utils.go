@@ -1,4 +1,4 @@
-// Copyright 2019-present Vic Shóstak. All rights reserved.
+// Copyright 2022 Vic Shóstak and Create Go App Contributors. All rights reserved.
 // Use of this source code is governed by Apache 2.0 license
 // that can be found in the LICENSE file.
 
@@ -33,7 +33,10 @@ func ShowMessage(level, text string, startWithNewLine, endWithNewLine bool) {
 	message := fmt.Sprintf("%s %s %s %s", startLine, colorizeLevel(level), text, endLine)
 
 	// Return output.
-	fmt.Fprintln(Stdout, message)
+	_, err := fmt.Fprintln(Stdout, message)
+	if err != nil {
+		return
+	}
 }
 
 // ShowError function for send error message to output.
@@ -50,10 +53,10 @@ func CalculateDurationTime(startTimer time.Time) string {
 func colorizeLevel(level string) string {
 	// Define variables.
 	var (
-		red         string = "\033[0;31m"
-		green       string = "\033[0;32m"
-		yellow      string = "\033[1;33m"
-		noColor     string = "\033[0m"
+		red         = "\033[0;31m"
+		green       = "\033[0;32m"
+		yellow      = "\033[1;33m"
+		noColor     = "\033[0m"
 		color, icon string
 	)
 

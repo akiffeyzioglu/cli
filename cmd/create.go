@@ -1,4 +1,4 @@
-// Copyright 2019-present Vic Shóstak. All rights reserved.
+// Copyright 2022 Vic Shóstak and Create Go App Contributors. All rights reserved.
 // Use of this source code is governed by Apache 2.0 license
 // that can be found in the LICENSE file.
 
@@ -10,9 +10,10 @@ import (
 	"time"
 
 	"github.com/AlecAivazis/survey/v2"
+	"github.com/spf13/cobra"
+
 	"github.com/create-go-app/cli/v3/pkg/cgapp"
 	"github.com/create-go-app/cli/v3/pkg/registry"
-	"github.com/spf13/cobra"
 )
 
 func init() {
@@ -110,13 +111,33 @@ func runCreateCmd(cmd *cobra.Command, args []string) error {
 				return cgapp.ShowError(err.Error())
 			}
 		} else {
-			// Create a default frontend template from Vite.js.
-			if err := cgapp.ExecCommand(
-				"npm",
-				[]string{"init", "vite@latest", "frontend", "--", "--template", frontend},
-				true,
-			); err != nil {
-				return err
+			switch {
+			case frontend == "next" || frontend == "next-ts":
+				var isTypeScript string
+				if frontend == "next-ts" {
+					isTypeScript = "--typescript"
+				}
+
+				// Create a default frontend template with Next.js (React).
+				if err := cgapp.ExecCommand(
+					"npx", []string{"create-next-app@latest", "frontend", isTypeScript}, true,
+				); err != nil {
+					return err
+				}
+			case frontend == "nuxt3":
+				// Create a default frontend template with Nuxt 3 (Vue.js 3, TypeScript).
+				if err := cgapp.ExecCommand(
+					"npx", []string{"nuxi", "init", "frontend"}, true,
+				); err != nil {
+					return err
+				}
+			default:
+				// Create a default frontend template from Vite (Pure JS/TS, React, Preact, Vue, Svelte, Lit).
+				if err := cgapp.ExecCommand(
+					"npm", []string{"init", "vite@latest", "frontend", "--", "--template", frontend}, true,
+				); err != nil {
+					return err
+				}
 			}
 		}
 
