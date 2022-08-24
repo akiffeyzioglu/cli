@@ -80,6 +80,16 @@ func runCreateCmd(cmd *cobra.Command, args []string) error {
 		proxy = createAnswers.Proxy
 	}
 
+	// Catch the cancel action (hit "n" in the last question).
+	if !createAnswers.AgreeCreation {
+		cgapp.ShowMessage(
+			"",
+			"Oh no! You said \"no\", so I won't create anything. Hope to see you soon!",
+			true, true,
+		)
+		return nil
+	}
+
 	// Start timer.
 	startTimer := time.Now()
 
@@ -233,7 +243,7 @@ func runCreateCmd(cmd *cobra.Command, args []string) error {
 	case "traefik", "traefik-acme-dns":
 		proxyList = []string{"nginx"}
 	case "nginx":
-		proxyList = []string{"nginx"}
+		proxyList = []string{"traefik"}
 	default:
 		proxyList = []string{"traefik", "nginx"}
 	}
