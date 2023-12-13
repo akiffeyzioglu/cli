@@ -1,4 +1,4 @@
-// Copyright 2022 Vic Shóstak and Create Go App Contributors. All rights reserved.
+// Copyright 2023 Vic Shóstak and Create Go App Contributors. All rights reserved.
 // Use of this source code is governed by Apache 2.0 license
 // that can be found in the LICENSE file.
 
@@ -8,8 +8,8 @@ import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/spf13/cobra"
 
-	"github.com/create-go-app/cli/v3/pkg/cgapp"
-	"github.com/create-go-app/cli/v3/pkg/registry"
+	"github.com/create-go-app/cli/v4/pkg/cgapp"
+	"github.com/create-go-app/cli/v4/pkg/registry"
 )
 
 var (
@@ -47,7 +47,7 @@ frontend (JavaScript, TypeScript) and deploy automation
 -> Focus on writing code and thinking of business logic!
 <- The Create Go App CLI will take care of the rest.
 
-A helpful documentation and next steps -> https://create-go.app/`,
+A helpful documentation and next steps -> https://github.com/create-go-app/cli/wiki`,
 }
 
 func init() {

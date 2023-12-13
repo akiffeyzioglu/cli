@@ -1,4 +1,4 @@
-// Copyright 2022 Vic Shóstak and Create Go App Contributors. All rights reserved.
+// Copyright 2023 Vic Shóstak and Create Go App Contributors. All rights reserved.
 // Use of this source code is governed by Apache 2.0 license
 // that can be found in the LICENSE file.
 
@@ -11,7 +11,7 @@ import (
 )
 
 // CLIVersion version of Create Go App CLI.
-const CLIVersion string = "3.6.2"
+const CLIVersion string = "4.1.0"
 
 // Variables struct for Ansible variables (inventory, hosts).
 type Variables struct {
@@ -66,20 +66,26 @@ var (
 					"vanilla-ts",
 					"react",
 					"react-ts",
+					"react-swc",
+					"react-swc-ts",
 					"preact",
 					"preact-ts",
 					"next",
 					"next-ts",
-					"nuxt3",
+					"nuxt",
 					"vue",
 					"vue-ts",
 					"svelte",
 					"svelte-ts",
-					"lit-element",
-					"lit-element-ts",
+					"solid",
+					"solid-ts",
+					"lit",
+					"lit-ts",
+					"qwik",
+					"qwik-ts",
 				},
 				Default:  "none",
-				PageSize: 16,
+				PageSize: 21,
 			},
 		},
 		{
